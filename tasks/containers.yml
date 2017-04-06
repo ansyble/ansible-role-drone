@@ -1,0 +1,41 @@
+---
+- name: drone | containers
+  docker_service:
+    project_name: drone
+    definition:
+      version: '3'
+      services:
+
+        drone-server:
+          container_name: drone-server
+          image: "drone/drone:{{ drone_version }}"
+          restart: always
+          ports:
+            - 127.0.0.1:8010:8000
+          volumes:
+            - /var/lib/drone:/var/lib/drone
+          environment:
+            DRONE_OPEN: 'true'
+            DRONE_GITHUB: 'true'
+            DRONE_GITHUB_CLIENT: "{{ drone_github_client_id }}"
+            DRONE_GITHUB_SECRET: "{{ drone_github_client_secret }}"
+            DRONE_SECRET: "{{ drone_secret }}"
+
+        drone-agent:
+          container_name: drone-agent
+          image: "drone/drone:{{ drone_version }}"
+          command: agent
+          depends_on:
+            - drone-server
+          restart: always
+          volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+          environment:
+            DRONE_SERVER: ws://drone-server:8000/ws/broker
+            DRONE_SECRET: "{{ drone_secret }}"
+
+- name: drone | client
+  unarchive:
+    src: http://downloads.drone.io/release/linux/amd64/drone.tar.gz
+    dest: /usr/local/bin
+    remote_src: True

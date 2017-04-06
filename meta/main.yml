@@ -1,0 +1,16 @@
+galaxy_info:
+  author: mongkok
+  company: defocus.io
+  description: Continuous Delivery platform
+  min_ansible_version: 1.4
+  license: MIT
+  platforms:
+  - name: Ubuntu
+    versions:
+    - all
+  categories:
+  - drone.io
+  - continuous integration
+  - ci
+
+dependencies: []

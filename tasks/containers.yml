@@ -11,7 +11,7 @@
           image: "drone/drone:{{ drone_version }}"
           restart: always
           ports:
-            - 127.0.0.1:8010:8000
+            - "{{ drone_ip_addr }}:{{ drone_port }}:8000"
           volumes:
             - /var/lib/drone:/var/lib/drone
           environment:
@@ -33,4 +33,3 @@
           environment:
             DRONE_SERVER: ws://drone-server:8000/ws/broker
             DRONE_SECRET: "{{ drone_secret }}"
-

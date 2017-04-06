@@ -34,8 +34,3 @@
             DRONE_SERVER: ws://drone-server:8000/ws/broker
             DRONE_SECRET: "{{ drone_secret }}"
 
-- name: drone | client
-  unarchive:
-    src: http://downloads.drone.io/release/linux/amd64/drone.tar.gz
-    dest: /usr/local/bin
-    remote_src: True

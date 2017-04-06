@@ -1,3 +1,6 @@
 ---
 - include: containers.yml
   tags: [drone, drone-containers]
+
+- include: client.yml
+  tags: [drone, drone-client]

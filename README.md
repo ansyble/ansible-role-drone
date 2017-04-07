@@ -4,6 +4,12 @@
 
 [Ansible](http://www.ansible.com) role to deploy [drone.io](http://readme.drone.io)
 
+### Install
+
+```sh
+ansible-galaxy install ansyble.drone
+```
+
 ### Usage
 
 ```yml

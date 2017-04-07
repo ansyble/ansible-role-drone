@@ -18,7 +18,6 @@ galaxy_info:
     - all
   galaxy_tags:
   - drone
-  - continuous-integration
   - ci
 
 dependencies: []

@@ -1,15 +1,22 @@
 ---
 galaxy_info:
   author: mongkok
-  company: defocus.io
+  company: ansyble
   description: Continuous Delivery platform
   min_ansible_version: 2.0
   license: MIT
   platforms:
+  - name: EL
+    versions:
+    - 6
+    - 7
   - name: Ubuntu
     versions:
     - all
-  categories:
+  - name: Debian
+    versions:
+    - all
+  galaxy_tags:
   - drone
   - continuous-integration
   - ci

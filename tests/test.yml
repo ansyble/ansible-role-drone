@@ -1,4 +1,7 @@
 ---
 - hosts: localhost
   remote_user: root
+  vars_files:
+    - vars.yml
   roles:
+    - drone

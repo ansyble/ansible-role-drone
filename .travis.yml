@@ -2,7 +2,8 @@
 language: python
 python: "2.7"
 
-sudo: false
+services:
+  - docker
 
 addons:
   apt:
@@ -16,11 +17,18 @@ install:
   # Check ansible version
   - ansible --version
 
+  # Create localhost inventory
+  - printf localhost > inventory
+
   # Create ansible.cfg with correct roles_path
-  - printf '[defaults]\nroles_path=../' >ansible.cfg
+  - printf '[defaults]\nroles_path=../' > ansible.cfg
 
 script:
   # Basic role syntax check
-  - ansible-playbook tests/test.yml -i tests/inventory --syntax-check
+  - ansible-playbook tests/playbook.yml -i inventory --syntax-check
+
+  # Play test
+  # - ansible-playbook tests/playbook.yml -i inventory --connection=local
 
 notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/

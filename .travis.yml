@@ -10,9 +10,17 @@ addons:
     packages:
     - python-pip
 
+before_install:
+  - deactivate
+  - sudo apt-get update -qq
+  - sudo apt-get install -y docker-engine
+
 install:
+  # Install Python client for docker
+  - sudo pip install docker docker-compose
+
   # Install ansible
-  - pip install ansible
+  - sudo pip install ansible
 
   # Check ansible version
   - ansible --version
@@ -28,7 +36,7 @@ script:
   - ansible-playbook tests/playbook.yml -i inventory --syntax-check
 
   # Play test
-  # - ansible-playbook tests/playbook.yml -i inventory --connection=local --sudo
+  - ansible-playbook tests/playbook.yml -i inventory --connection=local --sudo
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/

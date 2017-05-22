@@ -14,6 +14,7 @@ ansible-galaxy install ansyble.drone
 ### Usage
 
 ```yml
+drone_host: https://domake.io
 drone_secret: 'my-secret'
 drone_github_client_id: 'my-client-id'
 drone_github_client_secret: 'my-client-secret'
@@ -23,6 +24,7 @@ drone_github_client_secret: 'my-client-secret'
 
 ```yml
 drone_version: 0.6
+drone_host: http://localhost
 drone_ip_addr: 0.0.0.0
 drone_port: 80
 ```

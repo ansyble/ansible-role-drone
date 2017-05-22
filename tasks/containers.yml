@@ -15,6 +15,7 @@
           volumes:
             - /var/lib/drone:/var/lib/drone
           environment:
+            DRONE_HOST: "{{ drone_host }}"
             DRONE_OPEN: 'true'
             DRONE_GITHUB: 'true'
             DRONE_GITHUB_CLIENT: "{{ drone_github_client_id }}"

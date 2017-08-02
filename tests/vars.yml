@@ -1,5 +1,6 @@
 ---
 drone_admin: test
+drone_host: http://drone.io
 drone_secret: 'my-secret'
 drone_github_client_id: 'my-client-id'
 drone_github_client_secret: 'my-client-secret'

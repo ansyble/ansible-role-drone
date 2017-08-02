@@ -23,8 +23,8 @@ drone_github_client_secret: 'my-client-secret'
 ### Defaults
 
 ```yml
-drone_version: 0.6
-drone_host: http://localhost
+drone_version: latest
 drone_ip_addr: 0.0.0.0
 drone_port: 80
+drone_open: 'true'
 ```

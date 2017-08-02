@@ -12,19 +12,21 @@
           restart: always
           ports:
             - "{{ drone_ip_addr }}:{{ drone_port }}:8000"
+            - 9000:9000
           volumes:
             - /var/lib/drone:/var/lib/drone
           environment:
-            DRONE_HOST: "{{ drone_host }}"
-            DRONE_OPEN: 'true'
+            DRONE_OPEN: "{{ drone_open }}"
+            DRONE_ADMIN: "{{ drone_admin }}"
             DRONE_GITHUB: 'true'
+            DRONE_HOST: "{{ drone_host }}"
             DRONE_GITHUB_CLIENT: "{{ drone_github_client_id }}"
             DRONE_GITHUB_SECRET: "{{ drone_github_client_secret }}"
             DRONE_SECRET: "{{ drone_secret }}"
 
         drone-agent:
           container_name: drone-agent
-          image: "drone/drone:{{ drone_version }}"
+          image: "drone/agent:{{ drone_version }}"
           command: agent
           depends_on:
             - drone-server
@@ -32,5 +34,5 @@
           volumes:
             - /var/run/docker.sock:/var/run/docker.sock
           environment:
-            DRONE_SERVER: ws://drone-server:8000/ws/broker
+            DRONE_SERVER: "drone-server:9000"
             DRONE_SECRET: "{{ drone_secret }}"

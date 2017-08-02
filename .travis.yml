@@ -13,7 +13,7 @@ addons:
 before_install:
   - deactivate
   - sudo apt-get update -qq
-  - sudo apt-get install -y docker-engine
+  - sudo apt-get install -y docker.io
 
 install:
   # Install Python client for docker

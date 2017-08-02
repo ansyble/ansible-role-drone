@@ -4,11 +4,6 @@ language: python
 services:
   - docker
 
-addons:
-  apt:
-    packages:
-    - python-pip
-
 before_install:
   - deactivate
   - sudo apt-get update -qq

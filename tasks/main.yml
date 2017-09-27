@@ -1,6 +1,6 @@
 ---
-- include: containers.yml
+- import_tasks: containers.yml
   tags: [drone, drone-containers]
 
-- include: client.yml
+- import_tasks: client.yml
   tags: [drone, drone-client]
